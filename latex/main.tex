@@ -1,4 +1,5 @@
 \documentclass[11pt, a4paper, twoside,parskip=full, openright]{scrreprt}
+\usepackage{titlecaps}
 
 \begin{document}
 	% Cover and oath
@@ -6,7 +7,7 @@
 	% pre-page counter starts with oath
 	\pagenumbering{roman}
 	
-    \section{Hello \textit{world}.}
+    \section{\titlecap{Hello \textit{world}.}}
     \subsection{Watermelon}
     \begin{tabular}{c c}
         red lemon & uncommon \\ \n
@@ -14,6 +15,8 @@
     \end{tabular}
     \section{Section}
     \section{Section2}
+    \titlecap{this is a test of the package}
+
 
 
 \end{document}	

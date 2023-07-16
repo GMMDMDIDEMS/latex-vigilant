@@ -1,8 +1,16 @@
-from tex2py import tex2py
+import logging
+from utils.webdriver import manage_driver, Webdriver
 
-with open("main.tex") as f:
-    data = f.read()
+def main():
+    logging.basicConfig(level=logging.INFO)
 
-soup = tex2py(data)
+    CONFIG_PATH = "config.json"
+    webdriver = Webdriver.from_config(CONFIG_PATH)
 
-print(soup.branches)
+    with manage_driver(webdriver.driver) as driver:
+        driver.get(webdriver.base_url)
+        webdriver.logger.info("Opened the base URL.")
+
+
+if __name__ == "__main__":
+    main()
