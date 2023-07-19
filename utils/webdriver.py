@@ -12,6 +12,7 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.firefox.service import Service as GeckoService
 from selenium.webdriver.chrome.service import Service as ChromeService
 
+
 @contextmanager
 def manage_driver(driver):
     try:
@@ -46,6 +47,18 @@ class Webdriver:
     logger: logging.Logger = field(init=False)
 
     def __post_init__(self):
+        if not isinstance(self.headless, bool) or not isinstance(self.ad_blocking, bool):
+            raise TypeError(
+                "'headless' and 'ad_blocking' must be of type 'bool'.")
+        if not isinstance(self.timeout, int):
+            raise TypeError("'timeout' must be an integer")
+        if not isinstance(self.base_url, str):
+            raise TypeError("'base_url' must be a string")
+
+        VALID_BROWSERS = ["brave", "chrome", "firefox"]
+        if self.browser not in VALID_BROWSERS:
+            raise ValueError(
+                f'"{self.browser}" not supported. Supported browsers: "brave", "chrome" or "firefox"')
         self.logger = logging.getLogger(__name__)
         self.initialize_browser()
 
@@ -74,7 +87,6 @@ class Webdriver:
                 service=GeckoService(GeckoDriverManager().install()), options=options)
         else:
             raise ValueError(f"Unsupported browser: '{self.browser}'")
-
 
     @classmethod
     def from_config(cls, config_file: str):
