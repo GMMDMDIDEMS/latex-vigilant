@@ -11,7 +11,7 @@ import time
 
 def get_result():
     try:
-        result = driver.find_element_by_xpath('//*[@id="result-titlecase"]')
+        result = driver.find_element(By.XPATH,'//*[@id="result-titlecase"]')
         print(result.text)
         return result
     except StaleElementReferenceException:
@@ -24,19 +24,6 @@ options.binary_location = '/Applications/Brave Browser.app/Contents/MacOS/Brave 
 driver = webdriver.Chrome(options = options)
 wait = WebDriverWait(driver, 10)
 time.sleep(5)
-all_iframes = driver.find_elements_by_tag_name("iframe")
-if len(all_iframes) > 0:
-    print("Ad Found\n")
-    driver.execute_script("""
-        var elems = document.getElementsByTagName("iframe"); 
-        for(var i = 0, max = elems.length; i < max; i++)
-             {
-                 elems[i].hidden=true;
-             }
-                          """)
-    print('Total Ads: ' + str(len(all_iframes)))
-else:
-    print('No frames found')
 
 def read_file(file_path):
     with open(file_path, 'r') as file:
@@ -52,6 +39,20 @@ file_path = 'unittests/data/headings.txt'
 
 driver.get("https://titlecase.com/titlecase")
 
+
+all_iframes = driver.find_elements(By.TAG_NAME,"iframe")
+if len(all_iframes) > 0:
+    print("Ad Found\n")
+    driver.execute_script("""
+        var elems = document.getElementsByTagName("iframe"); 
+        for(var i = 0, max = elems.length; i < max; i++)
+             {
+                 elems[i].hidden=true;
+             }
+                          """)
+    print('Total Ads: ' + str(len(all_iframes)))
+else:
+    print('No frames found')
 
 # Wait until the contenteditable div is visible
 try:
@@ -126,3 +127,30 @@ try:
 finally:
     # Quit the browser
     driver.quit()
+
+
+
+import os
+from tex2py import tex2py
+
+LATEX_PROJECT_PATH = "latex"
+
+def get_tex_files(project_path):
+    tex_files = []
+    
+    for root, dirs, files in os.walk(project_path):
+        for file in files:
+            if file.endswith(".tex"):
+                tex_files.append(os.path.join(root, file))
+    
+    return tex_files
+
+tex_files = get_tex_files(LATEX_PROJECT_PATH)
+
+for file_path in tex_files:
+    print(file_path)
+    with open(file_path) as f:
+        data = f.read()
+
+    soup = tex2py(data)
+    print(soup.branches)
