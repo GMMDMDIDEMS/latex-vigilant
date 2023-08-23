@@ -1,11 +1,6 @@
 # latex-vigilant
 
-https://titlecaseconverter.com/rules/#NYT
-
-Latex package: https://ctan.math.illinois.edu/macros/latex/contrib/titlecaps/titlecaps.pdf
-Python titlecase implementation: https://github.com/wezm/titlecase
-
-Selenium Ads support: https://stackoverflow.com/questions/41460265/hide-remove-ads-with-selenium-python
-
-Pytest vs unittest: https://python.plainenglish.io/python-testing-basics-pytest-vs-unittest-fixtures-mocking-coverage-and-more-c93e85cf049f
-
+The repository's goal is to provide an easily accessible tool that assists LaTeX document writers 
+in identifying common (formatting) mistakes. This helps in preventing frustrating formatting errors, allowing 
+proofreaders to concentrate more on the content itself. As a result, the tool aims to enhance the
+overall quality of the documents produced.
