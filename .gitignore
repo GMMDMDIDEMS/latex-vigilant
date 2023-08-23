@@ -1078,6 +1078,7 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 ### Custom folders/files to ignore
-/tmp
+tmp/
+data/
 
 # End of https://www.toptal.com/developers/gitignore/api/venv,latex,linux,macos,python,windows,visualstudio,visualstudiocode,git,intellij+all
