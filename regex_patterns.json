@@ -1,0 +1,44 @@
+{
+    "patterns": [
+        {
+            "id": "001",
+            "regex": "[^~]\\\\cite",
+            "description": "Missing tilde."
+        },
+        {
+            "id": "002",
+            "regex": "\\b(I|i)n~\\\\cite",
+            "description": "Citation must not be introduced by 'In' or 'in'."
+        },
+        {
+            "id": "003",
+            "regex": " /emph{.?}",
+            "description": "/emph{...} duplicate checker"
+        },
+        {
+            "id": "004",
+            "regex": "[^\\\\begin\\{(sub)*?]figures?",
+            "description": "Figure written as 'figure' or 'figures'."
+        },
+        {
+            "id": "005",
+            "regex": "(F|f)igure(\\s+|~)\\d",
+            "description": "Do not refer to figures using hard-coded numbers. Use \\ref instead."
+        },
+        {
+            "id": "006",
+            "regex": ":\\s*?[A-Z]",
+            "description": "Word after colon must not be capitalized."
+        },
+        {
+            "id": "007",
+            "regex": "(\\b\\w+\\b)(\\s+\\1)+\\b",
+            "description": "Word duplicates."
+        },
+        {
+            "id": "008",
+            "regex": "[^%]\\\\(?:sub)*section\\{(.*?)\\}",
+            "description": "(Sub)section headings"
+        }
+    ]
+}
