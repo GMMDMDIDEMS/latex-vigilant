@@ -2,8 +2,8 @@
     "patterns": [
         {
             "id": "001",
-            "regex": "[^~]\\\\cite",
-            "description": "Missing tilde."
+            "regex": "([^~]|(\\s~))\\\\cite",
+            "description": "Missing tilde or whitespace between text and ~/cite{..}."
         },
         {
             "id": "002",
@@ -37,8 +37,23 @@
         },
         {
             "id": "008",
-            "regex": "[^%]\\\\(?:sub)*section\\{(.*?)\\}",
+            "regex": "(?<!%)\\\\(?:sub)*section\\{(.*?)\\}",
             "description": "(Sub)section headings"
+        },
+        {
+            "id": "009",
+            "regex": "([^%]|^)\\\\(?:sub)*section\\{(.*?)\\}",
+            "description": "(Sub)section headings"
+        },
+        {
+            "id": "010",
+            "regex": "^E.g.\\s|^I.e.\\s",
+            "description": "Do not use 'e.g.' or 'i.e.' at the beginning of a sentence."
+        },
+        {
+            "id": "011",
+            "regex": "\\\\newcommand\\{\\\\.*?\\}\\{[^/\\\\].*?\\}",
+            "description": "New commands."
         }
     ]
 }
