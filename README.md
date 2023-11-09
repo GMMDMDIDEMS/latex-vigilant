@@ -8,3 +8,5 @@ overall quality of the documents produced.
 ## Additional Information
 - [A or An](ttps://blog.apastyle.org/apastyle/2012/04/using-a-or-an-with-acronyms-and-abbreviations.html)
 - [A or An chekcer](https://www.a-or-an.com/)
+
+- [Definite article 'the' with initialisms and acronyms](https://www.dragoman.ist/definite-article-the-with-initialisms-and-acronyms/)
